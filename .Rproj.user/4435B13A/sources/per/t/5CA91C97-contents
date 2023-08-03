@@ -7,6 +7,11 @@ output: html_document
 
 ```{r setup, warning = FALSE, message=FALSE, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(dplyr)
+library(readr)
+library(ggplot2) 
 ```
 
 # About Bellabeat
@@ -191,7 +196,7 @@ ggplot(weigh_id_counts, aes(x=reorder(Var1, Freq))) +
   theme(axis.text.x = element_text(angle = 90))
 ```
 
-![](weightrecordingsperuser.png)
+![](https://i.imgur.com/aDJkJrs.png)
 
 Through further analysis, I found out that only 8/33 users recorded any weight data at all in Fitbit, and of those who did, 75% had less than 10 records. Clearly, manual tracking was fine for people who used it, but the problem is that hardly anyone did overall. 
 
