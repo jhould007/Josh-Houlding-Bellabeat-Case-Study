@@ -1,0 +1,709 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Bellabeat Case Study},
+  pdfauthor={Josh Houlding},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Bellabeat Case Study}
+\author{Josh Houlding}
+\date{2023-07-30}
+
+\begin{document}
+\maketitle
+
+\hypertarget{about-bellabeat}{%
+\section{About Bellabeat}\label{about-bellabeat}}
+
+Bellabeat is a technology company founded by Urška Sršen and Sandro Mur
+that produces wearable devices targeted toward women. These devices are
+intended to provide women with data on activity, sleep, stress, and
+reproductive health, empowering them to make healthier life decisions.
+According to their website, a ``massive majority of all products are
+created for and tested on men, then marketed to women.'' This means they
+have a good chance of being sub-optimal for women who buy them. As such,
+Bellabeat's mission is to provide women with devices made for them that
+can track menstrual cycles, as they play a huge role in a woman's
+health.
+
+\hypertarget{the-objective}{%
+\section{The objective}\label{the-objective}}
+
+Sršen believes that by analyzing usage data from non-Bellabeat smart
+devices to understand how consumers use them, the marketing analytics
+division can come up with recommendations to direct future Bellabeat
+marketing strategies.
+
+\hypertarget{the-data}{%
+\section{The data}\label{the-data}}
+
+This analysis was done with the
+\href{https://www.kaggle.com/datasets/arashnic/fitbit}{FitBit Fitness
+Tracker Data} dataset, publicly available on the data-sharing website
+known as Kaggle.According to the Kaggle page, it consists of personal
+tracker data from 30 eligible and consenting Fitbit users shared via a
+distributed survey in Amazon Mechanical Turk, consisting of
+minute-to-minute physical activity, heart rate, steps, distance, and
+sleep monitoring.
+
+The dataset has 18 CSV files, all containing various combinations of
+these attributes. Because many of the files contain duplicate data, I
+chose the following 3 files which were the most relevant to my analysis:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(knitr)}
+\NormalTok{dailyActivity }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"dailyActivity\_merged.csv"}\NormalTok{)}
+\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(dailyActivity), }\AttributeTok{caption =} \StringTok{"dailyActivity\_merged.csv."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 28\tabcolsep) * \real{0.0418}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 28\tabcolsep) * \real{0.0494}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 28\tabcolsep) * \real{0.0418}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 28\tabcolsep) * \real{0.0532}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 28\tabcolsep) * \real{0.0608}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 28\tabcolsep) * \real{0.0951}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 28\tabcolsep) * \real{0.0722}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 28\tabcolsep) * \real{0.0951}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 28\tabcolsep) * \real{0.0760}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 28\tabcolsep) * \real{0.0913}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 28\tabcolsep) * \real{0.0684}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 28\tabcolsep) * \real{0.0760}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 28\tabcolsep) * \real{0.0798}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 28\tabcolsep) * \real{0.0646}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 28\tabcolsep) * \real{0.0342}}@{}}
+\caption{dailyActivity\_merged.csv.}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+Id
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ActivityDate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+TotalSteps
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+TotalDistance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+TrackerDistance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+LoggedActivitiesDistance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+VeryActiveDistance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+ModeratelyActiveDistance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+LightActiveDistance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+SedentaryActiveDistance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+VeryActiveMinutes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FairlyActiveMinutes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+LightlyActiveMinutes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+SedentaryMinutes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Calories
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+Id
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ActivityDate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+TotalSteps
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+TotalDistance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+TrackerDistance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+LoggedActivitiesDistance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+VeryActiveDistance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+ModeratelyActiveDistance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+LightActiveDistance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+SedentaryActiveDistance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+VeryActiveMinutes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+FairlyActiveMinutes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+LightlyActiveMinutes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+SedentaryMinutes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Calories
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1503960366 & 4/12/2016 & 13162 & 8.50 & 8.50 & 0 & 1.88 & 0.55 & 6.06 &
+0 & 25 & 13 & 328 & 728 & 1985 \\
+1503960366 & 4/13/2016 & 10735 & 6.97 & 6.97 & 0 & 1.57 & 0.69 & 4.71 &
+0 & 21 & 19 & 217 & 776 & 1797 \\
+1503960366 & 4/14/2016 & 10460 & 6.74 & 6.74 & 0 & 2.44 & 0.40 & 3.91 &
+0 & 30 & 11 & 181 & 1218 & 1776 \\
+1503960366 & 4/15/2016 & 9762 & 6.28 & 6.28 & 0 & 2.14 & 1.26 & 2.83 & 0
+& 29 & 34 & 209 & 726 & 1745 \\
+1503960366 & 4/16/2016 & 12669 & 8.16 & 8.16 & 0 & 2.71 & 0.41 & 5.04 &
+0 & 36 & 10 & 221 & 773 & 1863 \\
+1503960366 & 4/17/2016 & 9705 & 6.48 & 6.48 & 0 & 3.19 & 0.78 & 2.51 & 0
+& 38 & 20 & 164 & 539 & 1728 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sleepDay }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"sleepDay\_merged.csv"}\NormalTok{)}
+\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(sleepDay), }\AttributeTok{caption =} \StringTok{"sleepDay\_merged.csv."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1294}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2588}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2118}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2235}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1765}}@{}}
+\caption{sleepDay\_merged.csv.}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+Id
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+SleepDay
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+TotalSleepRecords
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+TotalMinutesAsleep
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+TotalTimeInBed
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+Id
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+SleepDay
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+TotalSleepRecords
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+TotalMinutesAsleep
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+TotalTimeInBed
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1503960366 & 4/12/2016 12:00:00 AM & 1 & 327 & 346 \\
+1503960366 & 4/13/2016 12:00:00 AM & 2 & 384 & 407 \\
+1503960366 & 4/15/2016 12:00:00 AM & 1 & 412 & 442 \\
+1503960366 & 4/16/2016 12:00:00 AM & 2 & 340 & 367 \\
+1503960366 & 4/17/2016 12:00:00 AM & 1 & 700 & 712 \\
+1503960366 & 4/19/2016 12:00:00 AM & 1 & 304 & 320 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weightLogInfo }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"weightLogInfo\_merged.csv"}\NormalTok{)}
+\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(weightLogInfo), }\AttributeTok{caption =} \StringTok{"weightLogInfo\_merged.csv."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1183}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.2366}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0968}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1398}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0430}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.0645}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1613}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 14\tabcolsep) * \real{0.1398}}@{}}
+\caption{weightLogInfo\_merged.csv.}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+Id
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Date
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+WeightKg
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+WeightPounds
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Fat
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+BMI
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+IsManualReport
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+LogId
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+Id
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Date
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+WeightKg
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+WeightPounds
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Fat
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+BMI
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+IsManualReport
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+LogId
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1503960366 & 5/2/2016 11:59:59 PM & 52.6 & 115.9631 & 22 & 22.65 & TRUE
+& 1.462234e+12 \\
+1503960366 & 5/3/2016 11:59:59 PM & 52.6 & 115.9631 & NA & 22.65 & TRUE
+& 1.462320e+12 \\
+1927972279 & 4/13/2016 1:08:52 AM & 133.5 & 294.3171 & NA & 47.54 &
+FALSE & 1.460510e+12 \\
+2873212765 & 4/21/2016 11:59:59 PM & 56.7 & 125.0021 & NA & 21.45 & TRUE
+& 1.461283e+12 \\
+2873212765 & 5/12/2016 11:59:59 PM & 57.3 & 126.3249 & NA & 21.69 & TRUE
+& 1.463098e+12 \\
+4319703577 & 4/17/2016 11:59:59 PM & 72.4 & 159.6147 & 25 & 27.45 & TRUE
+& 1.460938e+12 \\
+\end{longtable}
+
+\hypertarget{limitations-of-the-data}{%
+\subsection{Limitations of the data}\label{limitations-of-the-data}}
+
+\begin{itemize}
+\tightlist
+\item
+  Demographic info on the 30 users is not available, so many of the
+  users may be men. This isn't ideal when analyzing data for insights on
+  women's health products.
+\item
+  The data was generated in a short time frame (April 12th, 2016 to May
+  12th, 2016).
+\item
+  Users gathered their health data using a variety of different Fitbit
+  trackers, each of which vary in features, adding an additional degree
+  of variability to the data.
+\end{itemize}
+
+\hypertarget{cleaning-the-data}{%
+\subsection{Cleaning the data}\label{cleaning-the-data}}
+
+I took several steps to ensure the data was clean and in a usable
+format.
+
+\hypertarget{removing-entries-with-missing-values}{%
+\subsubsection{Removing entries with missing
+values}\label{removing-entries-with-missing-values}}
+
+I tried running the following code to accomplish this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dailyActivity }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(dailyActivity)}
+\NormalTok{sleepDay }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(sleepDay)}
+\NormalTok{weightLogInfo }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(weightLogInfo)}
+\end{Highlighting}
+\end{Shaded}
+
+However, attempting to remove entries with missing values from the
+\texttt{weightLogInfo} was problematic because 65 out of 67 entries had
+a missing fat value. This was presumably because users did not record
+their fat content when weighing themselves.
+
+The first two dataframes, \texttt{dailyActivity} and \texttt{sleepDay}
+were unaffected because they did not have any missing values.
+
+\hypertarget{removing-duplicate-entries}{%
+\subsubsection{Removing duplicate
+entries}\label{removing-duplicate-entries}}
+
+I ran the following code to remove duplicate entries:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dailyActivity }\OtherTok{\textless{}{-}} \FunctionTok{distinct}\NormalTok{(dailyActivity)}
+\NormalTok{sleepDay }\OtherTok{\textless{}{-}} \FunctionTok{distinct}\NormalTok{(sleepDay)}
+\NormalTok{weightLogInfo }\OtherTok{\textless{}{-}} \FunctionTok{distinct}\NormalTok{(weightLogInfo)}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{dailyActivity} and \texttt{weightLogInfo} were unaffected, but
+sleepDay lost 3 duplicate entries.
+
+\hypertarget{converting-activity-dates-from-string-text-to-date-format}{%
+\subsubsection{Converting activity dates from string (text) to date
+format}\label{converting-activity-dates-from-string-text-to-date-format}}
+
+I used the following code:
+\texttt{dailyActivity\$ActivityDate\ \textless{}-\ as.Date(dailyActivity\$ActivityDate)},
+but the dates got messed up so I didn't continue with it.
+
+\hypertarget{converting-id-from-numerical-values-to-strings}{%
+\subsubsection{Converting Id from numerical values to
+strings}\label{converting-id-from-numerical-values-to-strings}}
+
+I thought turning the numerical Id values to strings would ensure that
+they are not treated as numerical values on the x-axis when plotting
+data later, so I ran the following code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dailyActivity}\SpecialCharTok{$}\NormalTok{Id }\OtherTok{\textless{}{-}} \FunctionTok{as.character}\NormalTok{(dailyActivity}\SpecialCharTok{$}\NormalTok{Id)}
+\NormalTok{sleepDay}\SpecialCharTok{$}\NormalTok{Id }\OtherTok{\textless{}{-}} \FunctionTok{as.character}\NormalTok{(sleepDay}\SpecialCharTok{$}\NormalTok{Id)}
+\NormalTok{weightLogInfo}\SpecialCharTok{$}\NormalTok{Id }\OtherTok{\textless{}{-}} \FunctionTok{as.character}\NormalTok{(weightLogInfo}\SpecialCharTok{$}\NormalTok{Id)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{removing-the-120000-am-timestamp-from-the-sleepday-variable-in-the-sleepday-dataframe}{%
+\subsubsection{\texorpdfstring{Removing the ``12:00:00 AM'' timestamp
+from the \texttt{SleepDay} variable in the \texttt{sleepDay}
+dataframe}{Removing the ``12:00:00 AM'' timestamp from the SleepDay variable in the sleepDay dataframe}}\label{removing-the-120000-am-timestamp-from-the-sleepday-variable-in-the-sleepday-dataframe}}
+
+This was redundant since we all know days start at 12:00 AM, so I ran
+this code to fix it:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sleepDay}\SpecialCharTok{$}\NormalTok{SleepDay }\OtherTok{\textless{}{-}} \FunctionTok{substr}\NormalTok{(sleepDay}\SpecialCharTok{$}\NormalTok{SleepDay, }\AttributeTok{start=}\DecValTok{1}\NormalTok{, }\AttributeTok{stop=}\DecValTok{9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{the-analysis}{%
+\section{The analysis}\label{the-analysis}}
+
+In my analysis, there were several questions I wanted to answer, which I
+will illustrate below.
+
+\hypertarget{how-many-users-wore-their-fitbit-device-during-the-day-on-each-day}{%
+\subsubsection{How many users wore their Fitbit device during the day on
+each
+day?}\label{how-many-users-wore-their-fitbit-device-during-the-day-on-each-day}}
+
+I found that on every single day of data collection, more than half of
+the 33 users wore their device at some point in the day.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{\# Filter out rows with 0 steps}
+\NormalTok{filtered\_data }\OtherTok{\textless{}{-}}\NormalTok{ dailyActivity }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(TotalSteps }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{)}
+
+\CommentTok{\# Group data by date and count the number of unique users}
+\NormalTok{step\_counts\_by\_date }\OtherTok{\textless{}{-}}\NormalTok{ filtered\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(ActivityDate) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{num\_users =} \FunctionTok{n\_distinct}\NormalTok{(Id))}
+
+\CommentTok{\# Find what \% of the time people were wearing their Fitbits overall}
+\NormalTok{avg\_users\_per\_day }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(step\_counts\_by\_date}\SpecialCharTok{$}\NormalTok{num\_users)}\SpecialCharTok{/}\DecValTok{31}
+\NormalTok{overall\_percent }\OtherTok{\textless{}{-}}\NormalTok{ (avg\_users\_per\_day}\SpecialCharTok{/}\DecValTok{31}\NormalTok{)}\SpecialCharTok{*}\DecValTok{100} 
+\FunctionTok{print}\NormalTok{(overall\_percent)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 89.80229
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create the bar plot}
+\FunctionTok{ggplot}\NormalTok{(step\_counts\_by\_date, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{reorder}\NormalTok{(ActivityDate, num\_users))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{mapping=}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y=}\NormalTok{num\_users), }\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{annotate}\NormalTok{(}\AttributeTok{geom=}\StringTok{"label"}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{12}\NormalTok{, }\AttributeTok{label=}\StringTok{"On average, 89.8\% of users }
+\StringTok{           wore their Fitbits on any given day."}\NormalTok{, }\AttributeTok{fill=}\StringTok{"white"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Number of Users who wore their Fitbit on each day"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Date"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Number of Users"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Bellabeat-Case-Study_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+As the graph shows, an average of 89.8\% of users wore their Fitbit at
+some point during the day. {This demonstrates that users are content to
+use their devices during the day to track their activity.}
+
+\hypertarget{how-many-users-wore-their-fitbit-device-to-bed-each-night}{%
+\subsubsection{How many users wore their Fitbit device to bed each
+night?}\label{how-many-users-wore-their-fitbit-device-to-bed-each-night}}
+
+Next, I investigated how often users wore their devices at night.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Analysis of sleep data}
+
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\CommentTok{\# Find how many users out of 33 recorded their sleep at least once}
+\NormalTok{num\_sleep\_users }\OtherTok{\textless{}{-}}\NormalTok{ sleepDay }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{num\_unique =} \FunctionTok{n\_distinct}\NormalTok{(Id))}
+\FunctionTok{print}\NormalTok{(num\_sleep\_users)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 1
+##   num_unique
+##        <int>
+## 1         24
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Find how many total sleep records were recorded by each user}
+\NormalTok{total\_sleep\_records\_per\_id }\OtherTok{\textless{}{-}}\NormalTok{ sleepDay }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Id) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{total\_sleep\_records =} \FunctionTok{sum}\NormalTok{(TotalSleepRecords))}
+
+\CommentTok{\# Create the bar plot}
+\FunctionTok{ggplot}\NormalTok{(total\_sleep\_records\_per\_id, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\FunctionTok{reorder}\NormalTok{(Id, total\_sleep\_records))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{mapping=}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y=}\NormalTok{total\_sleep\_records), }\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"purple"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{annotate}\NormalTok{(}\AttributeTok{geom=}\StringTok{"label"}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{12}\NormalTok{, }\AttributeTok{label=}\StringTok{"Only 15/33 users recorded more than}
+\StringTok{           10 sleep sessions."}\NormalTok{, }\AttributeTok{fill=}\StringTok{"white"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Number of sleep records for each user"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"User ID"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Number of Sleep Records"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Bellabeat-Case-Study_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+I found that only 24/33 users recorded sleep, and of those, 9/24
+recorded less than 10 sleep records during the 31-day period. This gets
+even worse when considering that some nights include multiple sleep
+records, so for several users, the number of nights they wore the
+tracker to bed is even less than the number of records. These are low
+numbers, suggesting many people don't want to wear their tracker to bed
+due to discomfort.
+
+\hypertarget{how-many-users-used-the-weight-tracking-and-how-many-did-it-manually}{%
+\subsubsection{How many users used the weight-tracking, and how many did
+it
+manually?}\label{how-many-users-used-the-weight-tracking-and-how-many-did-it-manually}}
+
+First, I calculated the percentage of weighs that were done manually.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\CommentTok{\# Find the proportion of weight logs that are done manually}
+\NormalTok{num\_manual\_weighs }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(weightLogInfo}\SpecialCharTok{$}\NormalTok{IsManualReport }\SpecialCharTok{==} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{percent\_manual\_weighs }\OtherTok{\textless{}{-}}\NormalTok{ (num\_manual\_weighs}\SpecialCharTok{/}\DecValTok{67}\NormalTok{)}\SpecialCharTok{*}\DecValTok{100}
+\FunctionTok{print}\NormalTok{(percent\_manual\_weighs)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 61.19403
+\end{verbatim}
+
+I found that \textasciitilde61\% of weighs are done manually, which
+suggests that manual weight tracking wasn't a problem for most people
+who used the weight-tracking feature. Additionally, 65/67 weight entries
+had no fat value, suggesting two possibilities: a) Most people used
+scales that didn't track fat composition, or b) They were using a scale
+that tracked fat but didn't sync to the Fitbit app automatically, so
+they were entering data manually and either forgot to or decided not to
+add fat values to their entry.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Find how many total weigh{-}ins were done by each user}
+\NormalTok{weigh\_id\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(weightLogInfo}\SpecialCharTok{$}\NormalTok{Id)}
+\NormalTok{weigh\_id\_counts }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(weigh\_id\_counts)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create the bar plot}
+\FunctionTok{ggplot}\NormalTok{(weigh\_id\_counts, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\FunctionTok{reorder}\NormalTok{(Var1, Freq))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{mapping=}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y=}\NormalTok{Freq), }\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"green"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{annotate}\NormalTok{(}\AttributeTok{geom=}\StringTok{"label"}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{15}\NormalTok{, }\AttributeTok{label=}\StringTok{"Only 8/33 users recorded their weight."}\NormalTok{, }\AttributeTok{fill=}\StringTok{"white"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Number of weight recordings per user"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"User ID"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Number of Weight Records"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{https://i.imgur.com/aDJkJrs.png}
+
+Through further analysis, I found out that only 8/33 users recorded any
+weight data at all in Fitbit, and of those who did, 75\% had less than
+10 records. Clearly, manual tracking was fine for people who used it,
+but the problem is that hardly anyone did overall.
+
+Considering how important it is to track weight, I found it strange that
+so few users did so with their devices. It may suggest lack of access to
+a convenient scale to use. {I believe that a convenient smart scale that
+auto-syncs with the Bellabeat app could be a great new product for
+Bellabeat to consider introducing to its customers.}
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+It is abundantly clear that users liked wearing their devices during the
+day, as \textasciitilde90\% of them did on the average day. However,
+usage dropped off significantly at night, and considering how important
+sleep quality is for overall health, this is a problem. I think this is
+because the devices are not comfortable enough for people to want to
+wear them to bed. {Thus, comfort should be a top priority for Bellabeat
+when designing its own wearable devices for women's health. They should
+then run an ad campaign emphasizing the importance of quality sleep, and
+highlight how women can best achieve it with new-and-improved,
+ultra-comfortable Bellabeat trackers.}
+
+Additionally, despite weight being a very important metric when tracking
+one's own health, weight tracking was barely utilized by the 33 users
+during this 31-day period. Less than 25\% of users (8/33) even recorded
+their weight a single time, and only 25\% of those (2/8) had more than
+10 entries. Also, the vast majority of weight entries had no fat values,
+an important piece of sub-data relevant to weight. {This seems like an
+issue of convenience, so I believe Bellabeat should design and market a
+smart scale that tracks fat content and automatically syncs with their
+app.}
+
+Ultimately, the key insight here is that users want a comfortable device
+that will passively collect all the health stats they care about. Thus,
+comfort and convenience should be the \#1 priority in Bellabeat's
+marketing strategy.
+
+\end{document}
