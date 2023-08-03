@@ -1,0 +1,2 @@
+"0","weightLogInfo <- read_csv(""weightLogInfo_merged.csv"")"
+"0","kable(head(weightLogInfo), caption = ""weightLogInfo_merged.csv."")"

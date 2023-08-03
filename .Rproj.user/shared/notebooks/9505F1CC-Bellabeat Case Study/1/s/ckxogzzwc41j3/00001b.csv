@@ -1,0 +1,8 @@
+"0","# Analysis of sleep data"
+"0",""
+"0","library(dplyr)"
+"0",""
+"0","# Find how many users out of 33 recorded their sleep at least once"
+"0","num_sleep_users <- sleepDay %>%"
+"0","  summarise(num_unique = n_distinct(Id))"
+"0","print(num_sleep_users)"

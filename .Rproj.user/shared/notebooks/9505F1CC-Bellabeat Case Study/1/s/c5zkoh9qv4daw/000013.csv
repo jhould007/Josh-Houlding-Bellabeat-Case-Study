@@ -1,0 +1,2 @@
+"0","sleepDay <- read_csv(""sleepDay_merged.csv"")"
+"0","kable(head(sleepDay), caption = ""sleepDay_merged.csv."")"

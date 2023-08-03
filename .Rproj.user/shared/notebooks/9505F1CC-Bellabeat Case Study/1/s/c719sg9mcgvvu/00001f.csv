@@ -1,0 +1,4 @@
+"0","library(tidyverse)"
+"0","library(knitr)"
+"0","dailyActivity <- read_csv(""dailyActivity_merged.csv"")"
+"0","kable(head(dailyActivity), caption = ""dailyActivity_merged.csv."")"

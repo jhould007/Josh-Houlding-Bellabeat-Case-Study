@@ -1,0 +1,12 @@
+library(tidyverse)
+library(dplyr)
+
+# Find the proportion of weight logs that are done manually
+num_manual_weighs <- sum(weightLogInfo$IsManualReport == TRUE, na.rm = TRUE)
+percent_manual_weighs <- (num_manual_weighs/67)*100
+# Findings: 61% of weighs are done manually.
+
+# Find how many total weigh-ins were done by each user
+weigh_id_counts <- table(df$ID)
+weigh_id_counts <- as.data.frame(id_counts)
+

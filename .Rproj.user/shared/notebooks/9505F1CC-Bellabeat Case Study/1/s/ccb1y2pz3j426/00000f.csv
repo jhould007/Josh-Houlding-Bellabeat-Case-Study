@@ -1,0 +1,3 @@
+"0","dailyActivity <- na.omit(dailyActivity)"
+"0","sleepDay <- na.omit(sleepDay)"
+"0","weightLogInfo <- na.omit(weightLogInfo)"

@@ -1,0 +1,1 @@
+"0","sleepDay$SleepDay <- substr(sleepDay$SleepDay, start=1, stop=9)"
